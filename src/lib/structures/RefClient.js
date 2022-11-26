@@ -21,7 +21,13 @@ class RefClient extends SapphireClient {
   }
 
   login() {
-    mongoose.connect(process.env.MONGO_URI, (err) => {
+    const dbOpts = {
+      dbName: process.env.NODE_ENV === 'production'
+        ? 'production'
+        : 'development'
+    }
+
+    mongoose.connect(process.env.MONGO_URI, dbOpts, (err) => {
       if (err) throw new Error(err)
 
       this.logger.info('Connected to MongoDB Database.')
