@@ -30,14 +30,14 @@ class CloseCommand extends RefCommand {
     await guild.channels.delete(report.channelId)
     await guild.roles.delete(report.roleId)
 
-    await message.reply({
-      embeds: [
-        new MessageEmbed()
-          .setTitle('Success')
-          .setDescription('You successfuly close the report')
-          .setColor('GREEN')
-      ]
-    })
+    // await message.reply({
+    //   embeds: [
+    //     new MessageEmbed()
+    //       .setTitle('Success')
+    //       .setDescription('You successfuly close the report')
+    //       .setColor('GREEN')
+    //   ]
+    // })
   }
 }
 
