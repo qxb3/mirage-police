@@ -56,7 +56,7 @@ class CreateCommand extends RefCommand {
       .setComponents(
         new MessageButton()
           .setStyle('LINK')
-          .setLabel('Jump')
+          .setLabel('JUMP')
           .setURL(`https://discord.com/channels/${guild.id}/${newChannel.id}`)
       )
 
