@@ -1,0 +1,70 @@
+const RefCommand = require('#structures/RefCommand')
+const {
+  Permissions,
+  MessageEmbed,
+  MessageActionRow,
+  MessageButton
+} = require('discord.js')
+
+const Reports = require('#models/reports')
+
+class CreateCommand extends RefCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
+      description: 'Create a private report channel',
+      preconditions: ['OneReportOnly']
+    })
+  }
+
+  async messageRun(message) {
+    const { guild, member } = message
+    const { username } = member.user
+
+    const newRole = await guild.roles.create({
+      name: `${username} report role`
+    })
+
+    const newChannel = await guild.channels.create(`${username} report`, {
+      parent: process.env.REPORT_CATEGORY_ID,
+      permissionOverwrites: [
+        {
+          id: newRole,
+          allow: [Permissions.FLAGS.VIEW_CHANNEL]
+        },
+        {
+          id: guild.roles.everyone,
+          deny: [Permissions.FLAGS.VIEW_CHANNEL]
+        }
+      ]
+    })
+
+    await member.roles.add(newRole)
+
+    await Reports.create({
+      userId: member.user.id,
+      roleId: newRole.id,
+      channelId: newChannel.id
+    })
+
+    const embed = new MessageEmbed()
+      .setTitle('Success')
+      .setDescription('You successfuly created a report')
+      .setColor('GREEN')
+
+    const buttons = new MessageActionRow()
+      .setComponents(
+        new MessageButton()
+          .setStyle('LINK')
+          .setLabel('Jump')
+          .setURL(`https://discord.com/channels/${guild.id}/${newChannel.id}`)
+      )
+
+    await message.reply({
+      embeds: [embed],
+      components: [buttons]
+    })
+  }
+}
+
+module.exports = CreateCommand

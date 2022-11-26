@@ -1,0 +1,31 @@
+{
+  "name": "ref",
+  "description": "Ref the discord bot",
+  "version": "0.0.1",
+  "license": "MIT",
+  "private": true,
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "@sapphire/framework": "^3.1.4",
+    "discord.js": "13",
+    "dotenv": "^16.0.3",
+    "module-alias": "^2.2.2",
+    "mongoose": "^6.7.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.28.0",
+    "nodemon": "^2.0.20"
+  },
+  "_moduleAliases": {
+    "#root": "./",
+    "#src": "./src",
+    "#lib": "./src/lib",
+    "#utils": "./src/lib/utils",
+    "#structures": "./src/lib/structures",
+    "#models": "./src/lib/models"
+  }
+}
