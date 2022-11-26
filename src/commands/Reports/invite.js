@@ -2,6 +2,7 @@ const RefCommand = require('#structures/RefCommand')
 const { MessageEmbed } = require('discord.js')
 
 const Reports = require('#models/reports')
+const { multiLine } = require('#utils/string')
 
 class InviteCommand extends RefCommand {
   constructor(context, options) {
@@ -13,23 +14,59 @@ class InviteCommand extends RefCommand {
   }
 
   async messageRun(message, args) {
-    const user = await args.pick('user').catch(() => null)
+    const member = await args.pick('member').catch(() => null)
+    const role = await args.pick('role').catch(() => null)
 
-    if (!user) {
+    if (!member && !role) {
       return await message.reply({
         embeds: [
           new MessageEmbed()
             .setTitle('Error')
-            .setDescription('You need to mention a user\nExample: `!invite @qxb3#4312`')
+            .setDescription(
+              multiLine(`
+                You need to mention a user or a role
+
+                Examples:
+                 ➥ \`!invite @qxb3#4312\`
+                 ➥ \`!invite @Guild Leaders\`
+              `)
+            )
             .setColor('RED')
         ]
       })
     }
 
-    const member = await message.guild.members.fetch(user.id)
     const report = await Reports.findOne({ userId: message.author.id })
 
-    await member.roles.add(report.roleId)
+    if (member) {
+      await member.roles.add(report.roleId)
+
+      await message.reply({
+        embeds: [
+          new MessageEmbed()
+            .setTitle('Success')
+            .setDescription(`Successfuly invited user ${member}`)
+            .setColor('GREEN')
+        ]
+      })
+    }
+
+    if (role) {
+      const reportChannel = await message.guild.channels.fetch(report.channelId)
+      await reportChannel.permissionOverwrites.edit(role.id, {
+        VIEW_CHANNEL: true,
+        SEND_MESSAGES: true
+      })
+
+      await message.reply({
+        embeds: [
+          new MessageEmbed()
+            .setTitle('Success')
+            .setDescription(`Successfuly invited role ${role}`)
+            .setColor('GREEN')
+        ]
+      })
+    }
   }
 }
 
