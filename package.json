@@ -1,6 +1,6 @@
 {
-  "name": "ref",
-  "description": "Ref the discord bot",
+  "name": "mirage-policd",
+  "description": "A discord bot for MR Guild-reports",
   "version": "0.0.1",
   "license": "MIT",
   "private": true,
