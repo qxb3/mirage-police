@@ -866,6 +866,14 @@
     "@sapphire/utilities" "^3.11.0"
     tslib "^2.4.0"
 
+"@sapphire/plugin-subcommands@^3.2.3":
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/@sapphire/plugin-subcommands/-/plugin-subcommands-3.2.3.tgz#51cf86bac04b78c294ab89838821af468184e20c"
+  integrity sha512-xUDkHdOXmqquO++I54ZOZg8Prh2YIJ7sSGBLXCU+FiNDbsfzbxr/McCfnKL65L6RBYOjf8d06up3GKPL8t9GpQ==
+  dependencies:
+    "@sapphire/utilities" "^3.11.0"
+    tslib "^2.4.0"
+
 "@sapphire/ratelimits@^2.4.5":
   version "2.4.5"
   resolved "https://registry.yarnpkg.com/@sapphire/ratelimits/-/ratelimits-2.4.5.tgz#40049436fcd3694acb8ddaf2eb61ea0963a0f9a0"

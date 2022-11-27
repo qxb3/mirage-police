@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@sapphire/framework": "^3.1.4",
+    "@sapphire/plugin-subcommands": "^3.2.3",
     "@sapphire/utilities": "^3.11.0",
     "discord.js": "13",
     "dotenv": "^16.0.3",
