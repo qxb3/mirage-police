@@ -1,7 +1,7 @@
 require('dotenv/config')
 require('module-alias/register')
 
-const RefClient = require('#structures/RefClient')
+const MirageClient = require('#structures/MirageClient')
 
-const client = new RefClient()
+const client = new MirageClient()
 client.login()

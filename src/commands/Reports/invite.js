@@ -1,7 +1,7 @@
-const RefCommand = require('#structures/RefCommand')
+const MirageCommand = require('#structures/MirageCommand')
 const Reports = require('#models/reports')
 
-class InviteCommand extends RefCommand {
+class InviteCommand extends MirageCommand {
   constructor(context, options) {
     super(context, {
       ...options,

@@ -1,6 +1,6 @@
-const RefCommand = require('#structures/RefCommand')
+const MirageCommand = require('#structures/MirageCommand')
 
-class HelpCommand extends RefCommand {
+class HelpCommand extends MirageCommand {
   constructor(context, options) {
     super(context, {
       ...options,

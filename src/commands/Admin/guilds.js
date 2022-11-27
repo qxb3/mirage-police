@@ -1,9 +1,9 @@
-const RefSubcommand = require('#structures/RefSubcommand')
+const MirageSubcommand = require('#structures/MirageSubcommand')
 const { Permissions } = require('discord.js')
 
 const Guilds = require('#models/guilds')
 
-class GuildsCommand extends RefSubcommand {
+class GuildsCommand extends MirageSubcommand {
   constructor(context, options) {
     super(context, {
       ...options,

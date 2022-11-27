@@ -1,4 +1,4 @@
-const RefCommand = require('#structures/RefCommand')
+const MirageCommand = require('#structures/MirageCommand')
 const {
   Permissions,
   MessageActionRow,
@@ -7,7 +7,7 @@ const {
 
 const Reports = require('#models/reports')
 
-class CreateCommand extends RefCommand {
+class CreateCommand extends MirageCommand {
   constructor(context, options) {
     super(context, {
       ...options,

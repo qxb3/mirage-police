@@ -6,7 +6,7 @@ const {
 
 const mongoose = require('mongoose')
 
-class RefClient extends SapphireClient {
+class MirageClient extends SapphireClient {
   constructor() {
     super({
       intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_MEMBERS'],
@@ -36,4 +36,4 @@ class RefClient extends SapphireClient {
   }
 }
 
-module.exports = RefClient
+module.exports = MirageClient

@@ -1,11 +1,8 @@
-const { Command } = require('@sapphire/framework')
+const { Subcommand } = require('@sapphire/plugin-subcommands')
 const { Permissions } = require('discord.js')
+const MirageCommand = require('#structures/MirageCommand')
 
-const { Colors } = require('#vars')
-const { Embed } = require('#utils/responses')
-const { multiLine } = require('#utils/string')
-
-class RefCommand extends Command {
+class MirageSubcommand extends Subcommand {
   constructor(context, options) {
     const permissions = new Permissions(options.requiredClientPermissions).add([
       Permissions.FLAGS.VIEW_CHANNEL,
@@ -19,14 +16,8 @@ class RefCommand extends Command {
       permissions
     })
 
-    RefCommand.setup.call(this)
-  }
-
-  static setup() {
-    this.colors = Colors
-    this.embed = Embed
-    this.multiLine = multiLine
+    MirageCommand.setup.call(this)
   }
 }
 
-module.exports = RefCommand
+module.exports = MirageSubcommand
