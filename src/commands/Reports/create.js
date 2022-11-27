@@ -1,7 +1,6 @@
 const RefCommand = require('#structures/RefCommand')
 const {
   Permissions,
-  MessageEmbed,
   MessageActionRow,
   MessageButton
 } = require('discord.js')
@@ -47,11 +46,7 @@ class CreateCommand extends RefCommand {
       channelId: newChannel.id
     })
 
-    const embed = new MessageEmbed()
-      .setTitle('Success')
-      .setDescription('You successfuly created a report')
-      .setColor('GREEN')
-
+    const embed = this.embed.createSuccess('You successfuly created a report')
     const buttons = new MessageActionRow()
       .setComponents(
         new MessageButton()

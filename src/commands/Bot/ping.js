@@ -1,7 +1,4 @@
 const RefCommand = require('#structures/RefCommand')
-const { MessageEmbed } = require('discord.js')
-
-const { multiLine } = require('#utils/string')
 
 class PingCommand extends RefCommand {
   constructor(context, options) {
@@ -15,24 +12,19 @@ class PingCommand extends RefCommand {
     const msg = await message.reply('Pinging...')
 
     const { diff, ping } = this.getPing(message,  msg)
-    const embed = this.getEmbed(diff, ping)
+    const embed = this.embed.create()
+      .setTitle('🏓 Pong!')
+      .setDescription(
+        this.multiLine(`
+          ➥ Roundtrip: \`${diff}ms\`
+          ➥ Ping: \`${ping}ms\`
+        `)
+      )
 
     await msg.edit({
       content: ' ',
       embeds: [embed]
     })
-  }
-
-  getEmbed(diff, ping) {
-    return new MessageEmbed()
-      .setTitle('🏓 Pong!')
-      .setDescription(
-        multiLine(`
-          ➥ Roundtrip: \`${diff}ms\`
-          ➥ Ping: \`${ping}ms\`
-        `)
-      )
-      .setColor('AQUA')
   }
 
   getPing(context, sent) {

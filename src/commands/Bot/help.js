@@ -1,5 +1,4 @@
 const RefCommand = require('#structures/RefCommand')
-const { MessageEmbed } = require('discord.js')
 
 class HelpCommand extends RefCommand {
   constructor(context, options) {
@@ -23,13 +22,12 @@ class HelpCommand extends RefCommand {
       return `〢 ${category}\n${cmdsStr}`
     }).join('\n\n')
 
-    const embed = new MessageEmbed()
-      .setTitle('Commands')
-      .setDescription(string)
-      .setColor('AQUA')
-
     await message.reply({
-      embeds: [embed]
+      embeds: [
+        this.embed.create()
+          .setTitle('Commands')
+          .setDescription(string)
+      ]
     })
   }
 }

@@ -1,6 +1,4 @@
 const RefCommand = require('#structures/RefCommand')
-const { MessageEmbed } = require('discord.js')
-
 const Reports = require('#models/reports')
 
 class CloseCommand extends RefCommand {
@@ -19,10 +17,7 @@ class CloseCommand extends RefCommand {
     if (!report) {
       return await message.reply({
         embeds: [
-          new MessageEmbed()
-            .setTitle('Error')
-            .setDescription('You currently have no report')
-            .setColor('RED')
+          this.embed.createError('You currently have no report')
         ]
       })
     }

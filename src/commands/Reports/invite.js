@@ -1,8 +1,5 @@
 const RefCommand = require('#structures/RefCommand')
-const { MessageEmbed } = require('discord.js')
-
 const Reports = require('#models/reports')
-const { multiLine } = require('#utils/string')
 
 class InviteCommand extends RefCommand {
   constructor(context, options) {
@@ -20,18 +17,7 @@ class InviteCommand extends RefCommand {
     if (!member && !role) {
       return await message.reply({
         embeds: [
-          new MessageEmbed()
-            .setTitle('Error')
-            .setDescription(
-              multiLine(`
-                You need to mention a user or a role
-
-                Examples:
-                 ➥ \`!invite @qxb3#4312\`
-                 ➥ \`!invite @Guild Leaders\`
-              `)
-            )
-            .setColor('RED')
+          this.embed.createCommandError('invite', 'You need to mention a user or a role')
         ]
       })
     }
@@ -43,10 +29,7 @@ class InviteCommand extends RefCommand {
 
       await message.reply({
         embeds: [
-          new MessageEmbed()
-            .setTitle('Success')
-            .setDescription(`Successfuly invited user ${member}`)
-            .setColor('GREEN')
+          this.embed.createSuccess(`Successfuly invited user ${member}`)
         ]
       })
     }
@@ -60,10 +43,7 @@ class InviteCommand extends RefCommand {
 
       await message.reply({
         embeds: [
-          new MessageEmbed()
-            .setTitle('Success')
-            .setDescription(`Successfuly invited role ${role}`)
-            .setColor('GREEN')
+          this.embed.createSuccess(`Successfuly invited role ${role}`)
         ]
       })
     }
