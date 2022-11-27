@@ -1,4 +1,4 @@
-# Mirage Realms Manager
+# Mirage Police
 A discord bot for MR Guild-reports
 
 ![GitHub](https://img.shields.io/github/license/qxb3/ref)
