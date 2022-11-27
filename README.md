@@ -1,4 +1,4 @@
-# ref
+# Mirage Realms Manager
 A discord bot for MR Guild-reports
 
 ![GitHub](https://img.shields.io/github/license/qxb3/ref)
