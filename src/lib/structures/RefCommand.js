@@ -19,7 +19,7 @@ class RefCommand extends Command {
       permissions
     })
 
-    RefCommand.setup()
+    RefCommand.setup.call(this)
   }
 
   static setup() {
