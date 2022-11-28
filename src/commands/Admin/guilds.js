@@ -89,8 +89,8 @@ class GuildsCommand extends MirageSubcommand {
         this.embed.createSuccess(this.multiLine(`
           You successfuly add a guild
 
-          ➥ Name: ${guildName},
-          ➥ Role: ${guildRole},
+          ➥ Name: ${guildName}
+          ➥ Role: ${guildRole}
           ➥ Channel: ${guildChannel}
         `))
       ]
