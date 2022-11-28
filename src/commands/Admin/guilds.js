@@ -60,7 +60,8 @@ class GuildsCommand extends MirageSubcommand {
 
     const guildRole = await message.guild.roles.create({
       name: guildName,
-      color: guildColor
+      color: guildColor,
+      hoist: true
     })
 
     const guildChannel = await message.guild.channels.create(guildName, {
