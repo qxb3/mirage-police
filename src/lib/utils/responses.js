@@ -20,7 +20,7 @@ class Embed {
 
   static createCommandError(commandName, errorMessage) {
     return this.createError(errorMessage)
-      .setFooter({ text: `Use "!help ${commandName}" commamd to learn more` })
+      .setFooter({ text: `Use "!help ${commandName}" command to learn more` })
   }
 }
 
