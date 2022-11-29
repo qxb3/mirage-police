@@ -23,14 +23,15 @@ class GuildsCommand extends MirageSubcommand {
     const string = guilds.map(guild => {
       return this.multiLine(`
         〢 ${guild.name}
+        ➥ Leader: ${guild.leader.name}
         ➥ Channel: <#${guild.channelId}>
-        ➥ Role: <@${guild.roleId}>
+        ➥ Role: <@&${guild.roleId}>
       `)
     }).join('\n\n')
 
     await message.reply({
       embeds: [
-        this.embed.create(this.colors.Secondary)
+        this.embed.create()
           .setTitle('Guilds')
           .setDescription(string || 'No guilds added yet.')
       ]
@@ -80,6 +81,10 @@ class GuildsCommand extends MirageSubcommand {
 
     await Guilds.create({
       name: guildName,
+      leader: {
+        name: 'Unknown',
+        id: 'unknown-id'
+      },
       roleId: guildRole.id,
       channelId: guildChannel.id
     })

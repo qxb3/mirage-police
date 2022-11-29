@@ -6,6 +6,16 @@ module.exports = createSchema('guilds', {
     required: true,
     unique: true
   },
+  leader: {
+    name: {
+      type: String,
+      required: true
+    },
+    id: {
+      type: String,
+      required: true
+    }
+  },
   roleId: {
     type: String,
     required: true
