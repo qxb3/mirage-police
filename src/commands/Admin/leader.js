@@ -6,6 +6,7 @@ class LeaderCommand extends MirageSubcommand {
     super(context, {
       ...options,
       description: 'Add or Remove leader from guild',
+      preconditions: [['AdminOnly', 'ModeratorOnly']],
       subcommands: [
         { name: '__default__', messageRun: '__default__', default: true },
         { name: 'add', messageRun: 'add' },
